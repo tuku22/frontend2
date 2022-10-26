@@ -68,7 +68,7 @@ onChange={inputChanged}>
 
 
 <LocalizationProvider dateAdapter={AdapterDayjs}>
-  <Stack spacking={3}>
+  <Stack spacing={3}>
     <DesktopDatePicker
     label="Date desktop"
     value={selectDate}

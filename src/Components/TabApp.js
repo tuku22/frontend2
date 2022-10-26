@@ -1,6 +1,6 @@
 import { Tab, Tabs } from "@mui/material";
 import React, { useState } from "react";
-import Todolist from "./TodoList";
+import Todolist from "./Todolist";
 export default function TabApp() {
   const [value, setValue] = useState("home");
   const handleChange = (event, value) => {
