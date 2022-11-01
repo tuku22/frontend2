@@ -16,11 +16,10 @@ import dayjs, { Dayjs } from 'dayjs';
 
 export default function Todolist() {
 
-  const [selectDate, handleDateChange] = useState(new Date());
 
   const [todo, setTodo] = useState({
     desc: '',
-    selectDate: '',
+    date: '',
     priority: ''
   });
   const [todos, setTodos] = useState([]);
@@ -29,7 +28,7 @@ export default function Todolist() {
 
   const [columnDefs] = useState([
     {field: 'description', sortable:true, filter:true},
-    {field: 'selectDate', sortable: true, filter:true},
+    {field: 'date', sortable: true, filter:true},
     {field: 'priority', sortable:true, filter:true,
   cellStyle: params => params.value === 'High' ? {color: 'red'} : {color: 'black'} }
   ]);
@@ -70,9 +69,9 @@ onChange={inputChanged}>
 <LocalizationProvider dateAdapter={AdapterDayjs}>
   <Stack spacing={3}>
     <DesktopDatePicker
-    label="Date desktop"
-    value={selectDate}
-    onChange={selectDate=>handleDateChange(selectDate)} 
+    label="Date"
+    value={todo.date}
+    onChange={value => setTodo({...todo, date: value})} 
     renderInput={(params) => <TextField {...params} /> }
     /> 
     </Stack>
@@ -86,8 +85,7 @@ onChange={inputChanged}>
   name="priority"
   value={todo.priority} 
   onChange={inputChanged}/>
-  
-
+   
 <Button onClick={addTodo} variant="contained">Add</Button>
 <Button onClick={deleteTodo} variant="contained">Delete</Button>
 </Stack>
